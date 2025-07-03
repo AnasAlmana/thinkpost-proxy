@@ -1,13 +1,12 @@
 export default async function handler(req, res) {
-  const { url } = req;
-  const mediaPath = url.replace("/api/media/", "");
+  const mediaPath = req.url.split("/api/media/")[1];
 
   const supabaseURL = `https://eztbwukcnddtvcairvpz.supabase.co/storage/v1/object/public/restaurant-images/${mediaPath}`;
 
   try {
     const response = await fetch(supabaseURL);
     if (!response.ok) {
-      return res.status(404).send("Image not found");
+      return res.status(404).send("Image not found in Supabase");
     }
 
     const contentType = response.headers.get("content-type") || "image/jpeg";
@@ -18,6 +17,6 @@ export default async function handler(req, res) {
     res.status(200).send(Buffer.from(buffer));
   } catch (err) {
     console.error("Image proxy error:", err);
-    res.status(500).send("Internal error");
+    res.status(500).send("Internal Server Error");
   }
 }
