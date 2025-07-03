@@ -3,6 +3,8 @@ export default async function handler(req, res) {
 
   const supabaseURL = `https://eztbwukcnddtvcairvpz.supabase.co/storage/v1/object/public/restaurant-images/${mediaPath}`;
 
+
+
   try {
     const response = await fetch(supabaseURL);
     if (!response.ok) {
