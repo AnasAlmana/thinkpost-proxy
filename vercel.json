@@ -1,1 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/media/(.*)",
+      "destination": "/api/media/$1"
+    }
+  ]
+}
 
