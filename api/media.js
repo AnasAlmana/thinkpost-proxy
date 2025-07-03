@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const mediaPath = req.url.split("/api/media/")[1];
-
+  // This is a single-line comment
   const supabaseURL = `https://eztbwukcnddtvcairvpz.supabase.co/storage/v1/object/public/restaurant-images/${mediaPath}`;
 
 
